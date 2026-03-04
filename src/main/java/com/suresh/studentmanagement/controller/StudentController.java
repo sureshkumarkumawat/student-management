@@ -51,4 +51,25 @@ public class StudentController {
         studentService.deleteStudent(id);
         return ResponseEntity.ok("Student deleted successfully!");
     }
+
+    // Search by Name
+    @GetMapping("/search/name")
+    public ResponseEntity<List<Student>> searchByName(@RequestParam String name) {
+        List<Student> students = studentService.searchByName(name);
+        return ResponseEntity.ok(students);
+    }
+
+    // Search by Department
+    @GetMapping("/search/department")
+    public ResponseEntity<List<Student>> searchByDepartment(@RequestParam String department) {
+        List<Student> students = studentService.searchByDepartment(department);
+        return ResponseEntity.ok(students);
+    }
+
+    // Search by Email
+    @GetMapping("/search/email")
+    public ResponseEntity<Student> searchByEmail(@RequestParam String email) {
+        Student student = studentService.searchByEmail(email);
+        return ResponseEntity.ok(student);
+    }
 }
